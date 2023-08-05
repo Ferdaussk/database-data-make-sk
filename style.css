@@ -1,0 +1,13 @@
+/* Style for the custom button */
+.custom-add-section-button {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.custom-add-section-button:hover {
+  background-color: #2980b9;
+}
