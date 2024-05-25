@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($registrationResult === true) {
             // Registration successful, perform further actions (e.g., redirect to user dashboard)
-            header("Location: user_front_view.php");
+            header(site_url('/user/'));
             exit(); // Make sure to add this exit() after header redirect
         } else {
             // Registration failed, display error message or redirect back to registration form

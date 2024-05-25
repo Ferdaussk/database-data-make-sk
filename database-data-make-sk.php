@@ -41,9 +41,20 @@ function sk_plugin_settings_page(){
 function custom_template_include($template) {
   if (is_page('registration')) {
     $plugin_template = plugin_dir_path(__FILE__) . 'registration-template.php';
-    $plugin_template = plugin_dir_path(__FILE__) . 'facebook_test/index.php';
     if (file_exists($plugin_template)) {
       return $plugin_template;
+    }
+  }
+  if (is_page('social')) {
+    $social_plugin_template = plugin_dir_path(__FILE__) . 'facebook_test/index.php';
+    if (file_exists($social_plugin_template)) {
+      return $social_plugin_template;
+    }
+  }
+  if (is_page('user')) {
+    $user_plugin_template = plugin_dir_path(__FILE__) . 'facebook_test/user_front_view.php';
+    if (file_exists($user_plugin_template)) {
+      return $user_plugin_template;
     }
   }
   return $template;
@@ -152,10 +163,12 @@ function your_plugin_create_table() {
 register_uninstall_hook(__FILE__, 'your_plugin_delete_table');
 function your_plugin_delete_table() {
   global $wpdb;
-  $table_name = $wpdb->prefix . 'ferdaussk_plugin_test';
-  $posts_table_name = $wpdb->prefix . 'posts';
-  $users_table_name = $wpdb->prefix . 'users';
-  $wpdb->query("DROP TABLE IF EXISTS $table_name");
+  $data_table_remove = [
+    $wpdb->prefix . 'ferdaussk_plugin_test',
+    $wpdb->prefix . 'posts',
+    $wpdb->prefix . 'users'
+  ];
+$wpdb->query("DROP TABLE IF EXISTS $data_table_remove");
 }
 
 function ferdaussk_test_import_in_bd(){
@@ -165,7 +178,10 @@ function ferdaussk_test_import_in_bd(){
 add_action('elementor/editor/before_enqueue_scripts', 'ferdaussk_test_import_in_bd');
 
 function db_test_import_in_bd(){
-  wp_enqueue_style('productsarchive-db-style', plugins_url('/facebook_test/style.css',__FILE__), null, '1.0', 'all');
+  wp_enqueue_style('productsarchive-public-db-style', plugins_url('/facebook_test/style.css',__FILE__), null, '1.0', 'all');
+  wp_enqueue_style('productsarchive-public-db-userfront-style', plugins_url('/facebook_test/user_front.css',__FILE__), null, '1.0', 'all');
+  wp_enqueue_script('productsarchive-public-db-script', plugins_url('/facebook_test/script.js',__FILE__), ['jquery'], '1.0', true);
+  wp_enqueue_script('productsarchive-public-db-userfront-script', plugins_url('/facebook_test/user_front.js',__FILE__), ['jquery'], '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'db_test_import_in_bd');
 

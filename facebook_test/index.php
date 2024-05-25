@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Social Media</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php 
+get_header();
+?>
     <header>
         <h1>A Social Media</h1>
         <div class="user-profile">
@@ -71,6 +65,5 @@
         </form>
         <!-- okey i maked the column in database table. now repaire the registerUser() function with <input type="file" id="profile_image" name="profile_image"> -->
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+<?php
+get_footer();

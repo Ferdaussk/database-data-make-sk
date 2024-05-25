@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Front View - Facebook-like Social Media</title>
-    <link rel="stylesheet" href="user_front.css">
+<?php
+get_header();
+?>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,8 +78,6 @@
         /* Add more styles as needed */
 
     </style>
-</head>
-<body>
     <header>
         <h1>A Social Media</h1>
         <form action="logout.php" method="post">
@@ -118,13 +112,13 @@
 
 
         <!-- Create new posts (Start) -->
-        <button class="create_a_new_post">Create Posts</button>
+        <button class="create_a_new_post">Create</button>
         <!-- Popup content -->
         <div class="popup-overlay"></div>
         <div class="popup-content">
-            <h3>Create a New Post</h3>
+            <h3>Create a New</h3>
             <form action="submit_post.php" method="post" enctype="multipart/form-data">
-                <label for="post_content">Post Content:</label>
+                <label for="post_content">Content:</label>
                 <textarea id="post_content" name="post_content" rows="4" required></textarea>
                 <br>
                 <label for="post_image">Upload Image:</label>
@@ -185,6 +179,5 @@
             <li>Friend request received</li>
         </ul>
     </div>
-    <script src="user_front.js"></script>
-</body>
-</html>
+<?php
+get_footer();
